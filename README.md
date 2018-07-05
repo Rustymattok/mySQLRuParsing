@@ -46,7 +46,7 @@ jdbc.lastDate = 0015-00-00 00:00:00  -  start point date for parsing
  
  4. THank you
  
- Vladimir Makarov
+ #Vladimir Makarov
  
     
 
