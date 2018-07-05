@@ -12,7 +12,9 @@
  2. System requrements
  
     JDK 8.0
+    
     PostgresSQl 9.5.12
+    
     Linux Ubuntu 10
     
  3. This Application can be start by two way:
@@ -20,11 +22,17 @@
  Sample:
  
 jdbc.url = jdbc:postgresql://localhost:5432 - indicate your data
+
 jdbc.nameTable = postgres - indicate your value
+
 jdbc.username = postgres - indicate your value
+
 jdbc.password = admin - indicate your value
+
 jdbc.weblink = http://www.sql.ru/forum/job - your shouldn't update it
+
 jdbc.corExp = 0 0 12 * * ? - here you can choose time lips
+
 jdbc.lastDate = 0015-00-00 00:00:00  -  start point date for parsing
  
  - if you work in IDEA it will be enough to run StartApplication.java
