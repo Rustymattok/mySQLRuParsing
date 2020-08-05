@@ -44,6 +44,9 @@ jdbc.lastDate = 0015-00-00 00:00:00  -  start point date for parsing
  
  java -jar SQLRuParser app.properties
  
+ # stack technology
+ Java 8 SE, JDBC, PostrgeSQL 9.1,JSOUP ,Quartz
+ 
  4. THank you
  
  #Vladimir Makarov
