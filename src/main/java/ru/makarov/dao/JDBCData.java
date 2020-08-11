@@ -39,6 +39,7 @@ public class JDBCData implements Store, AutoCloseable {
             st.setString(2, item.getDescription());
             st.setObject(3, new Timestamp(item.getDate().getTime()));
             st.executeUpdate();
+            st.close();
         } catch (SQLException e) {
             logger.info("method: addToData has mistake");
             e.printStackTrace();
@@ -66,6 +67,8 @@ public class JDBCData implements Store, AutoCloseable {
                     date = rs.getString(1);
                 }
             }
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             logger.info("not work of method selectMax");
             e.printStackTrace();
@@ -86,6 +89,8 @@ public class JDBCData implements Store, AutoCloseable {
                 post.setDescription(resultSet.getString(3));
                 post.setDate(resultSet.getDate(4));
             }
+            st.close();
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,6 +113,8 @@ public class JDBCData implements Store, AutoCloseable {
                 post.setDate(resultSet.getDate(4));
                 list.add(post);
             }
+            st.close();
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
