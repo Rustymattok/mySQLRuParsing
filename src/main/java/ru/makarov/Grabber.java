@@ -97,18 +97,17 @@ public class Grabber implements Grab {
 
     /**
      * Equal REST API manupilation.
+     *
+     * @param store - databse for work with data.
      * @value - /?msg=allPosts - show all data in data base.
      * @value - /?msg=lastDate - show final updaete of data base.
-     * @param store - databse for work with data.
      */
     public void web(Store store) {
         new Thread(() -> {
             try (ServerSocket server = new ServerSocket(Integer.parseInt("9000"))) {
                 while (!server.isClosed()) {
                     Socket socket = server.accept();
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-                    {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
                         String str;
                         while (!(str = in.readLine()).isEmpty()) {
                             if (str.contains("?msg=allPosts")) {
@@ -132,7 +131,6 @@ public class Grabber implements Grab {
                                 }
                             }
                         }
-                    }
                 }
 
             } catch (Exception e) {
