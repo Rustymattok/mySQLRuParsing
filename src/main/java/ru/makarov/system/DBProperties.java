@@ -19,14 +19,15 @@ public class DBProperties implements AutoCloseable {
     private String weblink;
     private String time;
     private String path;
-    private FileInputStream fis;
+    private InputStream in;
+    private BufferedReader reader;
     private static Logger logger = Logger.getLogger("InfoLogging");
 
     public DBProperties() {
         Properties property = new Properties();
         try {
-            InputStream in = getClass().getResourceAsStream("/app.properties");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            in = getClass().getResourceAsStream("/app.properties");
+            reader = new BufferedReader(new InputStreamReader(in));
             property.load(reader);
             this.url = property.getProperty("jdbc.url");
             this.nameTable = property.getProperty("jdbc.nameTable");
@@ -42,7 +43,8 @@ public class DBProperties implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        fis.close();
+        in.close();
+        reader.close();
     }
 }
 
