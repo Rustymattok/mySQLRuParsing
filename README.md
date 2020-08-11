@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Rustymattok/mySQLRuParsing.svg?branch=master)](https://travis-ci.org/Rustymattok/mySQLRuParsing.svg?branch=master)
 # Grabber-jobs
 
  1. This application for parsing web: mySql.ru
@@ -21,22 +22,22 @@ This Application use file properties:
 
 By default:
 
-jdbc.url = jdbc:postgresql://localhost:5432
-jdbc.nameTable = mytask
-jdbc.username = postgres
-jdbc.password = admin
-jdbc.weblink = http://www.sql.ru/forum/job
-jdbc.time = 3350
-jdbc.lastDate =0015-00-00 00:00:00
+- jdbc.url = jdbc:postgresql://localhost:5432
+- jdbc.nameTable = mytask
+- jdbc.username = postgres
+- jdbc.password = admin
+- jdbc.weblink = http://www.sql.ru/forum/job
+- jdbc.time = 3350
+- jdbc.lastDate =0015-00-00 00:00:00
 
 To start application: java -jar <way folder>/grabber.jar
  
 Result you may see on web:
-https://localhost:9000/?msg=allPosts - all data which was include to DB
-https://localhost:9000/?msg=lastDate - max date update which was include to DB
+- https://localhost:9000/?msg=allPosts - all data which was include to DB
+- https://localhost:9000/?msg=lastDate - max date update which was include to DB
   
  # stack technology
- Java 8 SE, JDBC, PostrgeSQL 9.1,JSOUP ,Quartz,Properties,REST API, Lambok
+ Java 8 SE, JDBC, PostrgeSQL 9.1,JSOUP ,Quartz,Properties,REST API,Lambok,Travis,Checkstyle,Liquebase
  
   # to do list
   - add HH parser
