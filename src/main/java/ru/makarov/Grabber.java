@@ -108,31 +108,31 @@ public class Grabber implements Grab {
                 while (!server.isClosed()) {
                     Socket socket = server.accept();
                     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-                        String str;
-                        while (!(str = in.readLine()).isEmpty()) {
-                            if (str.contains("?msg=allPosts")) {
-                                try (OutputStream out = socket.getOutputStream()) {
-                                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                                    for (Post post : store.allPost()) {
-                                        out.write(post.toString().getBytes());
-                                        out.write(System.lineSeparator().getBytes());
-                                    }
-                                } catch (IOException io) {
-                                    io.printStackTrace();
-                                }
-                            }
-                            if (str.contains("?msg=lastDate")) {
-                                try (OutputStream out = socket.getOutputStream()) {
-                                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                                    out.write(store.selectMax().toString().getBytes());
+                    String str;
+                    do {
+                        str = in.readLine();
+                        if (str.contains("?msg=allPosts")) {
+                            try (OutputStream out = socket.getOutputStream()) {
+                                out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                                for (Post post : store.allPost()) {
+                                    out.write(post.toString().getBytes());
                                     out.write(System.lineSeparator().getBytes());
-                                } catch (IOException io) {
-                                    io.printStackTrace();
                                 }
+                            } catch (IOException io) {
+                                io.printStackTrace();
                             }
                         }
+                        if (str.contains("?msg=lastDate")) {
+                            try (OutputStream out = socket.getOutputStream()) {
+                                out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                                out.write(store.selectMax().toString().getBytes());
+                                out.write(System.lineSeparator().getBytes());
+                            } catch (IOException io) {
+                                io.printStackTrace();
+                            }
+                        }
+                    } while (!str.isEmpty());
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

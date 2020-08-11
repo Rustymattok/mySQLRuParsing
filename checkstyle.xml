@@ -80,7 +80,7 @@
         <module name="EqualsHashCode"/>
         <!--<module text="HiddenField"/>-->
         <module name="IllegalInstantiation"/>
-        <!--<module name="InnerAssignment"/>-->
+        <module name="InnerAssignment"/>
         <!--<module text="MagicNumber"/>-->
         <module name="MissingSwitchDefault"/>
         <module name="SimplifyBooleanExpression"/>

@@ -23,7 +23,6 @@ public class DBProperties implements AutoCloseable {
     private static Logger logger = Logger.getLogger("InfoLogging");
 
     public DBProperties() {
-        System.out.println("im here 1");
         Properties property = new Properties();
         try {
             InputStream in = getClass().getResourceAsStream("/app.properties");
