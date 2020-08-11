@@ -1,13 +1,11 @@
-# mySQLRuParsing
+# Grabber-jobs
 
  1. This application for parsing web: mySql.ru
  
  It has responsobilty for parsing forum of job by java vacation
  Application makes parsing of web by java vacation and loades it to DataBase.
  It will update from the last day when we received new Item for job.
- 
- Class ParsingHTML responsible for parsing by word "Java"
- Class QuartzJob responsible for Time work
+
  
  2. System requrements
  
@@ -15,39 +13,36 @@
     
     PostgresSQl 9.5.12
     
-    Linux Ubuntu 10
+    Linux Ubuntu 10/Windiwos 10
     
- 3. This Application can be start by two way:
- Before start work first step to updae app.properties.It locates in folder resurces.
- Sample:
+ 3.
  
-jdbc.url = jdbc:postgresql://localhost:5432 - indicate your data
+This Application use file properties:
 
-jdbc.nameTable = postgres - indicate your value
+By default:
 
-jdbc.username = postgres - indicate your value
+jdbc.url = jdbc:postgresql://localhost:5432
+jdbc.nameTable = mytask
+jdbc.username = postgres
+jdbc.password = admin
+jdbc.weblink = http://www.sql.ru/forum/job
+jdbc.time = 3350
+jdbc.lastDate =0015-00-00 00:00:00
 
-jdbc.password = admin - indicate your value
-
-jdbc.weblink = http://www.sql.ru/forum/job - your shouldn't update it
-
-jdbc.corExp = 0 0 12 * * ? - here you can choose time lips
-
-jdbc.lastDate = 0015-00-00 00:00:00  -  start point date for parsing
+To start application: java -jar <way folder>/grabber.jar
  
- - if you work in IDEA it will be enough to run StartApplication.java
- - if you want to create jar file. For this point your should choose class StartApplication as main during compilation.
- 
- To start with jar file. Jar file and app.properties should be in one folder.
- app.properties include propertise for application .
- Sample of command in terminal:
- 
- java -jar SQLRuParser app.properties
- 
+Result you may see on web:
+https://localhost:9000/?msg=allPosts - all data which was include to DB
+https://localhost:9000/?msg=lastDate - max date update which was include to DB
+  
  # stack technology
- Java 8 SE, JDBC, PostrgeSQL 9.1,JSOUP ,Quartz
+ Java 8 SE, JDBC, PostrgeSQL 9.1,JSOUP ,Quartz,Properties,REST API, Lambok
  
- 4. THank you
+  # to do list
+  - add HH parser
+  - add job parser
+  - add args (depends of parser)
+  - add possobility to work with parallel stream of parser
  
  #Vladimir Makarov
  
